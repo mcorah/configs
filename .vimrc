@@ -54,6 +54,7 @@ if &t_Co > 2 || has("gui_running")
   filetype on
   au BufNewFile,BufRead *.ino set filetype=cpp
   au BufNewFile,BufRead *.tdl set filetype=cpp
+  au BufNewFile,BufRead *.xdr set filetype=cpp
   set hlsearch
 endif
 
