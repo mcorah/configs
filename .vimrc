@@ -53,6 +53,7 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   filetype on
   au BufNewFile,BufRead *.ino set filetype=cpp
+  au BufNewFile,BufRead *.tdl set filetype=cpp
   set hlsearch
 endif
 
@@ -103,3 +104,4 @@ set ts=3
 set tabstop=2
 set expandtab
 set nu
+
