@@ -104,7 +104,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export EDITOR="gvim"
+export EDITOR="vim"
 #my machine specific bash configs
 if [ -f ~/.bash_specific ]; then
 	. ~/.bash_specific
