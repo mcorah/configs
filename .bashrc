@@ -109,3 +109,4 @@ export EDITOR="vim"
 if [ -f ~/.bash_specific ]; then
 	. ~/.bash_specific
 fi
+alias sgrep='grep --exclude-dir=.svn -r'
