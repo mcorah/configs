@@ -106,7 +106,7 @@ set tabstop=2
 set expandtab
 set nu
 
-"for vim-latex"
+"for vim-latex
 filetype plugin on
 filetype indent on
 set grepprg=grep\ -nH\ $*
@@ -114,3 +114,9 @@ let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf='evince'
 set sw=2
+
+"spell check
+:map <F5> :setlocal spell! spelllang=en_us<CR>
+
+"folding
+set foldmethod=syntax
