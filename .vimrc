@@ -120,3 +120,14 @@ set sw=2
 
 "folding
 set foldmethod=syntax
+
+"automatic header gates
+
+function! s:insert_gates()
+  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")."_H"
+  execute "normal! i#ifndef " . gatename
+  execute "normal! o#define " . gatename . " "
+  execute "normal! Go#endif /* " . gatename . " */"
+  normal! kk
+endfunction
+autocmd BufNewFile *.{H,h,hpp} call <SID>insert_gates()
