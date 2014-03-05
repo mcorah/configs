@@ -131,3 +131,8 @@ function! s:insert_gates()
   normal! kk
 endfunction
 autocmd BufNewFile *.{H,h,hpp} call <SID>insert_gates()
+
+"color lines past 80
+set textwidth=80
+hi ColorColumn guibg=#cccccc ctermbg=7
+let &cc='+'.join(range(1,255),',+')
