@@ -116,7 +116,7 @@ let g:Tex_ViewRule_pdf='evince'
 set sw=2
 
 "spell check
-:map <F5> :setlocal spell! spelllang=en_us<CR>
+:map <F12> :setlocal spell! spelllang=en_us<CR>
 
 "folding
 set foldmethod=syntax
@@ -124,7 +124,7 @@ set foldmethod=syntax
 "automatic header gates
 
 function! s:insert_gates()
-  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")."_H"
+  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
   execute "normal! i#ifndef " . gatename
   execute "normal! o#define " . gatename . " "
   execute "normal! Go#endif /* " . gatename . " */"
