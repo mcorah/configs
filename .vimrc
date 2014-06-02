@@ -136,3 +136,6 @@ autocmd BufNewFile *.{H,h,hpp} call <SID>insert_gates()
 set textwidth=80
 hi ColorColumn guibg=#cccccc ctermbg=7
 let &cc='+'.join(range(1,255),',+')
+
+"thesaurus
+set thesaurus+=/home/micah/thesaurus/mthesaur.txt
