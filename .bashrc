@@ -107,4 +107,8 @@ export EDITOR="vim"
 if [ -f ~/.bash_specific ]; then
 	. ~/.bash_specific
 fi
+
 alias sgrep='grep --exclude-dir=.svn --exclude=*~ -r'
+
+function freplace() { find ./ -type f -exec sed -i -e "s|$1|$2|g" {} \; ;}
+
