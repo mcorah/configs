@@ -49,11 +49,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}[\u@\h:\[\033[03;34m\]\w\[\033[00m\]]\n\[\033[03;34m\]\$\[\033[00m\] '
-else
-    PS1='${debian_chroot:+($debian_chroot)}[\u@\h:\[\033[03;34m\]\w\[\033[00m\]]\n\[\033[03;34m\]\$\[\033[00m\] '
-fi
+PS1='${debian_chroot:+($debian_chroot)}\n\[\033[03;91m\][ \[\033[03;34m\]\u@\h\[\033[00m\] \[\033[03;91m\]: \[\033[03;34m\]\w\[\033[00m\] \[\033[03;91m\]]\n\n\[\033[03;91m\]\$\[\033[00m\] '
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
