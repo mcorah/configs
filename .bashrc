@@ -105,6 +105,7 @@ if [ -f ~/.bash_specific ]; then
 fi
 
 alias sgrep='grep --exclude-dir=.svn --exclude=*~ -r'
+alias julia='OPENBLAS_NUM_THREADS=4 julia'
 
 function freplace() { find ./ -type f -exec sed -i -e "s|$1|$2|g" {} \; ;}
 
