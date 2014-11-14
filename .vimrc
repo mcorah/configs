@@ -11,6 +11,16 @@
 "	    for OpenVMS:  sys$login:.vimrc
 
 " When started as "evim", evim.vim will already have done these settings.
+
+" Vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Plugin 'gmarik/vundle'
+Plugin 'JuliaLang/julia-vim' 
+
 if v:progname =~? "evim"
   finish
 endif
