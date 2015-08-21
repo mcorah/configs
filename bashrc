@@ -109,3 +109,54 @@ alias julia='OPENBLAS_NUM_THREADS=4 julia'
 
 function freplace() { find ./ -type f -exec sed -i -e "s|$1|$2|g" {} \; ;}
 
+function ipaddress
+{
+  ifconfig wlan0 | grep "inet " | awk -F'[: ]+' '{ print $4 }'
+}
+
+# ROS and RASL related
+function compile_wet_sandbox
+{
+    CWD=`pwd`;
+    cd ~/sandbox/$1/wet;
+    if (( "$#" == 1 )); then
+        CMD="catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release"
+        echo ${CMD}
+        eval ${CMD}
+    elif (( "$#" == 2 )); then
+        CMD="catkin_make --pkg ${2} --cmake-args -DCMAKE_BUILD_TYPE=Release"
+        echo ${CMD}
+        eval ${CMD}
+    fi
+    cd ${CWD};
+}
+alias csw='compile_wet_sandbox'
+
+export SANDBOX_FILE=~/.sandbox
+function set_sandbox
+{
+  echo "source ~/sandbox/${1}/workon" > $SANDBOX_FILE
+  source $SANDBOX_FILE
+}
+alias sbox="set_sandbox"
+
+if [ -e $SANDBOX_FILE ]; then
+  source $SANDBOX_FILE
+fi
+
+function ros_remote
+{
+  export ROS_MASTER_URI="http://${1}:11311"
+}
+
+function set_ros_ip
+{
+  export ROS_IP=$( ipaddress )
+}
+alias rosip="set_ros_ip"
+
+function ssh_quad
+{
+  ssh quad@${1}
+}
+alias ssh_quad="sshq"
