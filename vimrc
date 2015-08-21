@@ -18,8 +18,12 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+"Plugins ***************************
 Plugin 'gmarik/vundle'
 Plugin 'JuliaLang/julia-vim' 
+Plugin 'lervag/vimtex'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/taglist.vim'
 
 if v:progname =~? "evim"
   finish
@@ -149,3 +153,11 @@ let &cc='+'.join(range(1,255),',+')
 
 "thesaurus
 set thesaurus+=/home/micah/thesaurus/mthesaur.txt
+
+"you complete me for vimtex
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = [
+      \ 're!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'
+      \ ]
