@@ -66,9 +66,6 @@ endif
 if &t_Co > 2 || has("gui_running")
   syntax on
   filetype on
-  au BufNewFile,BufRead *.ino set filetype=cpp
-  au BufNewFile,BufRead *.tdl set filetype=cpp
-  au BufNewFile,BufRead *.xdr set filetype=cpp
   set hlsearch
 endif
 
@@ -113,6 +110,17 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
+" Filetype mappings
+au BufNewFile,BufRead *.ino set filetype=cpp
+au BufNewFile,BufRead *.tdl set filetype=cpp
+au BufNewFile,BufRead *.xdr set filetype=cpp
+au BufNewFile,BufRead *.launch set filetype=xml
+au BufNewFile,BufRead *.yaml set filetype=yaml
+au BufNewFile,BufRead *.xaml set filetype=xml
+au BufNewFile,BufRead *.txt set filetype=cmake
+au BufNewFile,BufRead *.{cc,cxx,cpp,h,hh,hpp,hxx} set filetype=cpp
+au BufNewFile,BufRead *.{unused,broken,broke,borked,old} set filetype=cpp
 
 "micah's stuff
 set ts=3
