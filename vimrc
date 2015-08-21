@@ -162,6 +162,10 @@ let &cc='+'.join(range(1,255),',+')
 "thesaurus
 set thesaurus+=/home/micah/thesaurus/mthesaur.txt
 
+"leader
+let maplocalleader = ','
+let mapleader = ' '
+
 "you complete me for vimtex
 if !exists('g:ycm_semantic_triggers')
   let g:ycm_semantic_triggers = {}
