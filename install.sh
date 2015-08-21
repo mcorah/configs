@@ -1,4 +1,4 @@
 #!/bin/bash
 set -x
-cp .vimrc ~/
-cp .bashrc ~/
+cp vimrc ~/.vimrc
+cp bashrc ~/.bashrc
