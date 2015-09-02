@@ -111,7 +111,12 @@ function freplace() { find ./ -type f -exec sed -i -e "s|$1|$2|g" {} \; ;}
 
 function ipaddress
 {
-  ifconfig wlan0 | grep "inet " | awk -F'[: ]+' '{ print $4 }'
+  CONNECTION=wlan0
+  if [ $# -eq 1 ]; then
+    CONNECTION=$1
+  fi
+
+  ifconfig $CONNECTION | grep "inet " | awk -F'[: ]+' '{ print $4 }'
 }
 
 # ROS and RASL related
@@ -151,7 +156,12 @@ function ros_remote
 
 function set_ros_ip
 {
-  export ROS_IP=$( ipaddress )
+  CONNECTION=wlan0
+  if [ $# -eq 1 ]; then
+    CONNECTION=$1
+  fi
+
+  export ROS_IP=$( ipaddress $CONNECTION )
 }
 alias rosip="set_ros_ip"
 
