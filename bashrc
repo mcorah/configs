@@ -120,33 +120,62 @@ function ipaddress
   ifconfig $CONNECTION | grep "inet " | awk -F'[: ]+' '{ print $4 }'
 }
 
+function show_var()
+{
+  for i in $@; do
+    echo "$i=${!i}"
+  done
+}
+
 # ROS and RASL related
 function compile_wet_sandbox
 {
-    CWD=`pwd`;
-    cd ~/sandbox/$1/wet;
-    if (( "$#" == 1 )); then
-        CMD="catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release"
-        echo ${CMD}
-        eval ${CMD}
-    elif (( "$#" == 2 )); then
-        CMD="catkin_make --pkg ${2} --cmake-args -DCMAKE_BUILD_TYPE=Release"
-        echo ${CMD}
-        eval ${CMD}
-    fi
-    cd ${CWD};
+  CWD=`pwd`;
+  cd ~/sandbox/$1/wet;
+  if (( "$#" == 1 )); then
+    CMD="catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release"
+    echo ${CMD}
+    eval ${CMD}
+  elif (( "$#" == 2 )); then
+    CMD="catkin_make --pkg ${2} --cmake-args -DCMAKE_BUILD_TYPE=Release"
+    echo ${CMD}
+    eval ${CMD}
+  fi
+  cd ${CWD};
 }
 alias csw='compile_wet_sandbox'
 
 export SANDBOX_FILE=~/.sandbox
 function set_sandbox
 {
-  echo "source ~/sandbox/${1}/workon" > $SANDBOX_FILE
-  source $SANDBOX_FILE
+  if (( "$#" == 1 )); then
+    WORKON_FILE=~/sandbox/${1}/workon
+    if [ -f $WORKON_FILE ]; then
+      echo "Setting $1 as current sandbox"
+      echo ". $WORKON_FILE" > $SANDBOX_FILE
+      source $SANDBOX_FILE
+    else
+      echo "ERROR: sandbox ~/sandbox/${1} does not exist, not changing workspace"
+    fi
+  else
+    if [ -f $SANDBOX_FILE ]; then
+      rm $SANDBOX_FILE
+    fi
+
+    if [ -n ${ROS_BASE_ENV+x} ]; then
+      source $ROS_BASE_ENV
+    else
+      echo "NO BASE ROS ENVIRONMENT SET"
+    fi
+  fi
+  # ROS_PACKAGE_PATH effectively provides a summary of loaded workspaces
+  # although a large number of variables are loaded including variables such as
+  # PATH and LD_LIBRARY_PATH
+  show_var ROS_PACKAGE_PATH
 }
 alias sbox="set_sandbox"
 
-if [ -e $SANDBOX_FILE ]; then
+if [ -f $SANDBOX_FILE ]; then
   source $SANDBOX_FILE
 fi
 
