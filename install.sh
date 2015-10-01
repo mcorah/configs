@@ -1,5 +1,7 @@
 #!/bin/bash
 set -x
-cp vimrc ~/.vimrc
-cp bashrc ~/.bashrc
-cp xmonad.hs ~/.xmonad/
+
+DIR=$( dirname ${BASH_SOURCE[0]} )
+cp ${DIR}/vimrc ~/.vimrc
+cp ${DIR}/bashrc ~/.bashrc
+cp ${DIR}/xmonad.hs ~/.xmonad/
