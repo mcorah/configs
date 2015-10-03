@@ -2,6 +2,6 @@
 set -x
 
 DIR=$( dirname ${BASH_SOURCE[0]} )
-cp ${DIR}/vimrc ~/.vimrc
-cp ${DIR}/bashrc ~/.bashrc
-cp ${DIR}/xmonad.hs ~/.xmonad/
+ln -s ${DIR}/vimrc ~/.vimrc
+ln -s ${DIR}/bashrc ~/.bashrc
+ln -s ${DIR}/xmonad.hs ~/.xmonad/
