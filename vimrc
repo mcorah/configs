@@ -23,7 +23,7 @@ call vundle#rc()
 
 "Plugins ***************************
 Plugin 'gmarik/vundle'
-Plugin 'JuliaLang/julia-vim' 
+Plugin 'JuliaLang/julia-vim'
 Plugin 'lervag/vimtex'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/taglist.vim'
@@ -96,6 +96,7 @@ if has("autocmd")
 
   augroup END
 
+  autocmd BufWritePre * :%s/\s\+$//e
 else
 
 "  set autoindent		" always set autoindenting on
