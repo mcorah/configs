@@ -1,5 +1,7 @@
 
-" An example for a vimrc file.
+" Micah Corah's vimrc file
+"
+" Derived initially from:
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
 " Last change:	2011 Apr 15
@@ -7,6 +9,7 @@
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
 "	      for Amiga:  s:.vimrc
+"
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 
@@ -28,10 +31,6 @@ Plugin 'vim-scripts/taglist.vim'
 if v:progname =~? "evim"
   finish
 endif
-
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -123,8 +122,12 @@ au BufNewFile,BufRead *.{cc,cxx,cpp,h,hh,hpp,hxx} set filetype=cpp
 au BufNewFile,BufRead *.{unused,broken,broke,borked,old} set filetype=cpp
 
 "micah's stuff
-set ts=3
+set shiftwidth=2
+set softtabstop=2
+set sw=2
 set tabstop=2
+set ts=2
+
 set expandtab
 set nu
 
@@ -135,13 +138,32 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf='evince'
-set sw=2
-
-"spell check
-:map <F12> :setlocal spell! spelllang=en_us<CR>
 
 "folding
 set foldmethod=syntax
+
+"color lines past 80
+set textwidth=80
+hi ColorColumn guibg=#cccccc ctermbg=7
+let &cc='+'.join(range(1,255),',+')
+
+"thesaurus
+set thesaurus+=/home/micah/thesaurus/mthesaur.txt
+
+
+"you complete me for vimtex
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = [
+      \ 're!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'
+      \ ]
+
+"""""""""""
+"
+" Functions
+"
+"""""""""""
 
 "automatic header gates
 
@@ -154,22 +176,11 @@ function! s:insert_gates()
 endfunction
 autocmd BufNewFile *.{H,h,hpp} call <SID>insert_gates()
 
-"color lines past 80
-set textwidth=80
-hi ColorColumn guibg=#cccccc ctermbg=7
-let &cc='+'.join(range(1,255),',+')
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"keybindings
 
-"thesaurus
-set thesaurus+=/home/micah/thesaurus/mthesaur.txt
-
+"spell check
+:map <F12> :setlocal spell! spelllang=en_us<CR>
 "leader
 let maplocalleader = ','
 let mapleader = ' '
-
-"you complete me for vimtex
-if !exists('g:ycm_semantic_triggers')
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = [
-      \ 're!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'
-      \ ]
