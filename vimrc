@@ -186,14 +186,4 @@ autocmd BufNewFile *.{H,h,hpp} call <SID>insert_gates()
 let maplocalleader = ','
 let mapleader = ' '
 
-if exists("g:loaded_fix_indentkeys")
-    finish
-endif
-
-let g:loaded_fix_indentkeys = 1
-
-" Set indentkeys option again on changed filetype option.
-" This fixes TeX \item indentation in combination with YouCompleteMe.
-" See https://github.com/Valloric/YouCompleteMe/issues/1244
-" You may add more filetypes if necessary.
-autocmd FileType tex,plaintex execute "setlocal indentkeys=" . &indentkeys
+imap jk <Esc>
