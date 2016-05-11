@@ -96,6 +96,7 @@ if has("autocmd")
 
   augroup END
 
+  " delete whitespace at end of line
   autocmd BufWritePre * :%s/\s\+$//e
 else
 
@@ -187,3 +188,8 @@ let maplocalleader = ','
 let mapleader = ' '
 
 imap jk <Esc>
+
+" Fix the difficult-to-read default setting for diff text highlighting.  The
+" bang (!) is required since we are overwriting the DiffText setting. The highlighting
+" for "Todo" also looks nice (yellow) if you don't like the "MatchParen" colors.
+highlight! link DiffAdd DiffChange
