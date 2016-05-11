@@ -200,3 +200,15 @@ function ssh_quad
   ssh quad@${1}
 }
 alias ssh_quad="sshq"
+
+function logdiff
+{
+  A=HEAD
+  B=$1
+  if (( $# == 2)); then
+    A=$1
+    B=$2
+  fi
+   git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s
+   %Cgreen(%cr)%Creset' --abbrev-commit --date=relative $A..$B
+}
