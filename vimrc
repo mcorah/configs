@@ -75,7 +75,7 @@ if has("autocmd")
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
-"  filetype plugin indent on
+  "  filetype plugin indent on
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
@@ -113,15 +113,14 @@ if !exists(":DiffOrig")
 endif
 
 " Filetype mappings
-au BufNewFile,BufRead *.ino set filetype=cpp
-au BufNewFile,BufRead *.tdl set filetype=cpp
-au BufNewFile,BufRead *.xdr set filetype=cpp
-au BufNewFile,BufRead *.launch set filetype=xml
-au BufNewFile,BufRead *.yaml set filetype=yaml
-au BufNewFile,BufRead *.xaml set filetype=xml
-au BufNewFile,BufRead *.txt set filetype=cmake
-au BufNewFile,BufRead *.{cc,cxx,cpp,h,hh,hpp,hxx} set filetype=cpp
-au BufNewFile,BufRead *.{unused,broken,broke,borked,old} set filetype=cpp
+au BufNewFile,BufRead *.ino.* set filetype=cpp
+au BufNewFile,BufRead *.tdl.* set filetype=cpp
+au BufNewFile,BufRead *.xdr.* set filetype=cpp
+au BufNewFile,BufRead *.launch.* set filetype=xml
+au BufNewFile,BufRead *.yaml.* set filetype=yaml
+au BufNewFile,BufRead *.xaml.* set filetype=xml
+au BufNewFile,BufRead CMakeLists.txt set filetype=cmake
+au BufNewFile,BufRead *.{cc,cxx,cpp,h,hh,hpp,hxx}.* set filetype=cpp
 
 "micah's stuff
 set shiftwidth=2
@@ -193,3 +192,6 @@ imap jk <Esc>
 " bang (!) is required since we are overwriting the DiffText setting. The highlighting
 " for "Todo" also looks nice (yellow) if you don't like the "MatchParen" colors.
 highlight! link DiffAdd DiffChange
+
+" file explorer
+map <leader>e :E<cr>

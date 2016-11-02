@@ -192,8 +192,21 @@ function set_ros_ip
   fi
 
   export ROS_IP=$( ipaddress $CONNECTION )
+  echo $ROS_IP
 }
 alias rosip="set_ros_ip"
+
+function setup_ros_base
+{
+  CONNECTION=wlan0
+  if [ $# -eq 1 ]; then
+    CONNECTION=$1
+  fi
+  rosip $CONNECTION
+
+  ros_remote $ROS_IP
+}
+alias sbase="setup_ros_base"
 
 function ssh_quad
 {
@@ -211,4 +224,24 @@ function logdiff
   fi
    git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s
    %Cgreen(%cr)%Creset' --abbrev-commit --date=relative $A..$B
+}
+
+function scan
+{
+  dev=wlan0
+  if (( $# == 1)); then
+    dev=$1
+  fi
+  echo "Scanning $dev"
+  sudo arp-scan --interface=$dev --localnet
+}
+
+function avconvert
+{
+  if (( $# == 1)); then
+    filename=$1
+    extension="${filename##*.}"
+    namestring="${filename%.*}"
+    avconv -i $filename "${namestring}_avconv.mp4"
+  fi
 }
