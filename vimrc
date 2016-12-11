@@ -113,12 +113,12 @@ if !exists(":DiffOrig")
 endif
 
 " Filetype mappings
-au BufNewFile,BufRead *.ino.* set filetype=cpp
-au BufNewFile,BufRead *.tdl.* set filetype=cpp
-au BufNewFile,BufRead *.xdr.* set filetype=cpp
-au BufNewFile,BufRead *.launch.* set filetype=xml
-au BufNewFile,BufRead *.yaml.* set filetype=yaml
-au BufNewFile,BufRead *.xaml.* set filetype=xml
+au BufNewFile,BufRead *.ino set filetype=cpp
+au BufNewFile,BufRead *.tdl set filetype=cpp
+au BufNewFile,BufRead *.xdr set filetype=cpp
+au BufNewFile,BufRead *.launch set filetype=xml
+au BufNewFile,BufRead *.yaml set filetype=yaml
+au BufNewFile,BufRead *.xaml set filetype=xml
 au BufNewFile,BufRead CMakeLists.txt set filetype=cmake
 au BufNewFile,BufRead *.{cc,cxx,cpp,h,hh,hpp,hxx}.* set filetype=cpp
 
