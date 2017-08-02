@@ -22,11 +22,11 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 "Plugins ***************************
-Plugin 'gmarik/vundle'
-Plugin 'JuliaLang/julia-vim'
-Plugin 'lervag/vimtex'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-scripts/taglist.vim'
+"Plugin 'gmarik/vundle'
+"Plugin 'JuliaLang/julia-vim'
+"Plugin 'lervag/vimtex'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'vim-scripts/taglist.vim'
 
 if v:progname =~? "evim"
   finish
