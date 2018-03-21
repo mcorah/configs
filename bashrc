@@ -245,3 +245,14 @@ function avconvert
     avconv -i $filename "${namestring}_avconv.mp4"
   fi
 }
+
+
+# run catkin tests and grep for output
+function catkin_gtest
+{
+  catkin build  --catkin-make-args run_tests && \
+  # greps output for Google red, green, or yellow
+  # See: https://github.com/google/googletest/blob/master/googletest/src/gtest.cc
+  catkin run_tests | command grep -E $(printf '\033\\[0;31m|\033\\[0;32m|\033\\[0;33m') && \
+  catkin_test_results
+}
