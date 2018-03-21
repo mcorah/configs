@@ -110,7 +110,7 @@ endif " has("autocmd")
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+        \ | wincmd p | diffthis
 endif
 
 " Filetype mappings
@@ -150,7 +150,7 @@ hi ColorColumn guibg=#cccccc ctermbg=7
 let &cc='+'.join(range(1,255),',+')
 
 "thesaurus
-set thesaurus+=/home/micah/thesaurus/mthesaur.txt
+" set thesaurus+=/home/micah/thesaurus/mthesaur.txt
 
 
 "you complete me for vimtex
@@ -196,3 +196,6 @@ highlight! link DiffAdd DiffChange
 
 " file explorer
 map <leader>e :E<cr>
+
+" This addresses complaints about callbacks in vimtex
+let g:vimtex_compiler_latexmk = {'callback' : 0}
