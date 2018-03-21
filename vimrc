@@ -27,6 +27,7 @@ Plugin 'JuliaLang/julia-vim'
 Plugin 'lervag/vimtex'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'matze/vim-tex-fold'
 
 if v:progname =~? "evim"
   finish
