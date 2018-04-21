@@ -212,6 +212,8 @@ let g:netrw_winsize = 25
 
 " ale configs
 map <leader>a :ALEToggle<cr>
+" start ale disabled
+let g:ale_enabled = 0
 
 " This addresses complaints about callbacks in vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}
