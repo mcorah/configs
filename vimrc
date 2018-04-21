@@ -181,12 +181,12 @@ autocmd BufNewFile *.{H,h,hpp} call <SID>insert_gates()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "keybindings
-
-"spell check
-:map <F12> :setlocal spell! spelllang=en_us<CR>
 "leader
 let maplocalleader = ','
 let mapleader = ' '
+
+"spell check
+:map <leader>s :setlocal spell! spelllang=en_us<CR>
 
 imap jk <Esc>
 
