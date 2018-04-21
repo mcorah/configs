@@ -211,7 +211,7 @@ let g:netrw_browse_split = 4
 let g:netrw_winsize = 25
 
 " ale configs
-map <leader>a :ALEToggle
+map <leader>a :ALEToggle<cr>
 
 " This addresses complaints about callbacks in vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}
