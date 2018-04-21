@@ -28,6 +28,7 @@ Plugin 'lervag/vimtex'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'matze/vim-tex-fold'
+Plugin 'w0rp/ale'
 
 if v:progname =~? "evim"
   finish
@@ -208,6 +209,9 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 " width fraction for window
 let g:netrw_winsize = 25
+
+" ale configs
+map <leader>a :ALEToggle
 
 " This addresses complaints about callbacks in vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}
