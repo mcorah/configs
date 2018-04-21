@@ -194,8 +194,20 @@ imap jk <Esc>
 " for "Todo" also looks nice (yellow) if you don't like the "MatchParen" colors.
 highlight! link DiffAdd DiffChange
 
-" file explorer
-map <leader>e :E<cr>
+"""""""""""""""""""""
+" File explorer stuff
+"""""""""""""""""""""
+
+" file explorer (vertical split)
+map <leader>e :Vexplore<cr>
+" disable banner (open with I)
+let g:netrw_banner = 0
+" tree style
+let g:netrw_liststyle = 3
+" open in previous window
+let g:netrw_browse_split = 4
+" width fraction for window
+let g:netrw_winsize = 25
 
 " This addresses complaints about callbacks in vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}
