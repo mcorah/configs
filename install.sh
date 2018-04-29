@@ -26,3 +26,4 @@ testandlink ${DIR}/vimrc      ~/.config/nvim/init.vim
 testandlink ${DIR}/bashrc     ~/.bashrc
 testandlink ${DIR}/xmonad.hs  ~/.xmonad/xmonad.hs
 testandlink ${DIR}/juliarc.jl ~/.juliarc.jl
+testandlink ${DIR}/mygitcheck.py ~/mygitcheck.py
