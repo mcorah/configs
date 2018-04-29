@@ -30,6 +30,15 @@ Plugin 'vim-scripts/taglist.vim'
 Plugin 'matze/vim-tex-fold'
 Plugin 'w0rp/ale'
 
+" stuff for google code formatting
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
+
+call vundle#end()
+call glaive#Install()
+
+
 if v:progname =~? "evim"
   finish
 endif
@@ -214,6 +223,10 @@ let g:netrw_winsize = 25
 map <leader>a :ALEToggle<cr>
 " start ale disabled
 let g:ale_enabled = 0
+
+" google formatting configs
+map <leader>fl :FormatLines<cr>
+map <leader>fc :FormatCode<cr>
 
 " This addresses complaints about callbacks in vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}
