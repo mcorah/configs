@@ -228,5 +228,18 @@ let g:ale_enabled = 0
 map <leader>fl :FormatLines<cr>
 map <leader>fc :FormatCode<cr>
 
+" Copy Paste
+" from: https://www.reddit.com/r/neovim/comments/3fricd/easiest_way_to_copy_from_neovim_to_system/
+" Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+
+" Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
 " This addresses complaints about callbacks in vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}
