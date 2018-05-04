@@ -243,3 +243,4 @@ vnoremap <leader>P "+P
 
 " This addresses complaints about callbacks in vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}
+let g:vimtex_imaps_enabled = 0
