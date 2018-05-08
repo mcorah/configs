@@ -143,13 +143,8 @@ set ts=2
 set expandtab
 set nu
 
-"for vim-latex
 filetype plugin on
 filetype indent on
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_ViewRule_pdf='evince'
 
 "folding
 set foldmethod=syntax
@@ -286,3 +281,4 @@ else
 endif
 
 let g:vimtex_imaps_enabled = 0
+let g:vimtex_view_method='zathura'
