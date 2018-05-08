@@ -241,6 +241,48 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
+" warn if not using nvim
+if ! has ('nvim')
+  :echom "Did you mean to use nvim?"
+endif
+
+"vimtex stuff
+
 " This addresses complaints about callbacks in vimtex
-let g:vimtex_compiler_latexmk = {'callback' : 0}
+if has('nvim')
+  let g:vimtex_compiler_latexmk = {
+      \ 'backend' : 'nvim',
+      \ 'background' : 1,
+      \ 'build_dir' : '',
+      \ 'callback' : 1,
+      \ 'continuous' : 1,
+      \ 'executable' : 'latexmk',
+      \ 'options' : [
+      \   '-pdf',
+      \   '-shell-escape',
+      \   '-verbose',
+      \   '-file-line-error',
+      \   '-synctex=1',
+      \   '-interaction=nonstopmode',
+      \ ],
+      \}
+else
+  let g:vimtex_compiler_latexmk = {
+      \ 'backend' : 'process',
+      \ 'background' : 1,
+      \ 'build_dir' : '',
+      \ 'callback' : 0,
+      \ 'continuous' : 1,
+      \ 'executable' : 'latexmk',
+      \ 'options' : [
+      \   '-pdf',
+      \   '-shell-escape',
+      \   '-verbose',
+      \   '-file-line-error',
+      \   '-synctex=1',
+      \   '-interaction=nonstopmode',
+      \ ],
+      \}
+endif
+
 let g:vimtex_imaps_enabled = 0
