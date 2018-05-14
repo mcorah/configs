@@ -282,3 +282,11 @@ endif
 
 let g:vimtex_imaps_enabled = 0
 let g:vimtex_view_method='zathura'
+
+" vim-tex-fold configs
+" (align included bydefault)
+let g:tex_fold_additional_envs = [
+  \ 'enumerate',
+  \ 'itemize',
+  \ 'align*', 'equation',
+  \ ]
