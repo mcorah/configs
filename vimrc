@@ -290,3 +290,9 @@ let g:tex_fold_additional_envs = [
   \ 'itemize',
   \ 'align*', 'equation',
   \ ]
+
+" Modifications to syntax highlighting for diff mode
+" highlight DiffAdd    cterm=bold ctermfg=none ctermbg=17 gui=none guifg=bg guibg=Red
+" highlight DiffDelete cterm=bold ctermfg=none ctermbg=17 gui=none guifg=bg guibg=Red
+" highlight DiffChange cterm=bold ctermfg=none ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=none ctermbg=131 gui=none guifg=bg guibg=Red
