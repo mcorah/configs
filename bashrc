@@ -245,3 +245,14 @@ function avconvert
     avconv -i $filename "${namestring}_avconv.mp4"
   fi
 }
+
+
+function sshsetup
+{
+  FILE=~/.ssh/id_rsa
+  if (( $# == 1)) ; then
+    FILE=$1
+  fi
+  eval `ssh-agent` > /dev/null && ssh-add $FILE
+}
+
