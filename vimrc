@@ -237,7 +237,7 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 " warn if not using nvim
-if ! has ('nvim')
+if (! has ('nvim')) && executable('nvim')
   :echom "Did you mean to use nvim?"
 endif
 
