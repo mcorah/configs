@@ -256,3 +256,12 @@ function catkin_gtest
   catkin run_tests | command grep -E $(printf '\033\\[0;31m|\033\\[0;32m|\033\\[0;33m') && \
   catkin_test_results
 }
+
+function githashes
+{
+  for name in *; do
+    cd $name
+    echo "$name: " `git rev-parse --short HEAD`
+    cd ..
+  done
+}
