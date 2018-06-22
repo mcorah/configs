@@ -260,8 +260,9 @@ function catkin_gtest
 function githashes
 {
   for name in *; do
+    (
     cd $name
     echo "$name: " `git rev-parse --short HEAD`
-    cd ..
+    )
   done
 }
