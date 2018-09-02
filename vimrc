@@ -204,13 +204,13 @@ highlight! link DiffAdd DiffChange
 """""""""""""""""""""
 
 " file explorer (vertical split)
-map <leader>e :Vexplore<cr>
+map <leader>e :Explore<cr>
 " disable banner (open with I)
 let g:netrw_banner = 0
 " tree style
 let g:netrw_liststyle = 3
-" open in previous window
-let g:netrw_browse_split = 4
+" Edit in the current pane
+let g:netrw_browse_split = 0
 " width fraction for window
 let g:netrw_winsize = 25
 
