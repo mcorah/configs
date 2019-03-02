@@ -296,3 +296,6 @@ let g:tex_fold_additional_envs = [
 " highlight DiffDelete cterm=bold ctermfg=none ctermbg=17 gui=none guifg=bg guibg=Red
 " highlight DiffChange cterm=bold ctermfg=none ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=none ctermbg=131 gui=none guifg=bg guibg=Red
+
+" remove that ugly extra space when joining lines
+set nojoinspaces
