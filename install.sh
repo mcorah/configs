@@ -27,3 +27,4 @@ testandlink ${DIR}/bashrc     ~/.bashrc
 testandlink ${DIR}/xmonad.hs  ~/.xmonad/xmonad.hs
 testandlink ${DIR}/juliarc.jl ~/.juliarc.jl
 testandlink ${DIR}/mygitcheck.py ~/mygitcheck.py
+testandlink ${DIR}/clang-format ~/.clang-format
