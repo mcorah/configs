@@ -74,6 +74,9 @@ endif
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
+  filetype plugin on
+  filetype indent on
+
   syntax on
   filetype on
   set hlsearch
@@ -142,9 +145,6 @@ set ts=2
 
 set expandtab
 set nu
-
-filetype plugin on
-filetype indent on
 
 "folding
 set foldmethod=syntax
