@@ -283,6 +283,9 @@ endif
 let g:vimtex_imaps_enabled = 0
 let g:vimtex_view_method='zathura'
 
+" Do not open the quickfix window automatically
+let g:vimtex_quickfix_mode = 0
+
 " vim-tex-fold configs
 " (align included bydefault)
 let g:tex_fold_additional_envs = [
