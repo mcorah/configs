@@ -21,10 +21,11 @@ function testandlink
 }
 
 DIR=$( cd $( dirname "${BASH_SOURCE[0]}" ) && pwd )
-testandlink ${DIR}/vimrc      ~/.vimrc
-testandlink ${DIR}/vimrc      ~/.config/nvim/init.vim
-testandlink ${DIR}/bashrc     ~/.bashrc
-testandlink ${DIR}/xmonad.hs  ~/.xmonad/xmonad.hs
-testandlink ${DIR}/juliarc.jl ~/.juliarc.jl
-testandlink ${DIR}/mygitcheck.py ~/mygitcheck.py
-testandlink ${DIR}/clang-format ~/.clang-format
+testandlink ${DIR}/vimrc           ~/.vimrc
+testandlink ${DIR}/vimrc           ~/.config/nvim/init.vim
+testandlink ${DIR}/bashrc          ~/.bashrc
+testandlink ${DIR}/xmonad.hs       ~/.xmonad/xmonad.hs
+testandlink ${DIR}/juliarc.jl      ~/.juliarc.jl
+testandlink ${DIR}/mygitcheck.py   ~/mygitcheck.py
+testandlink ${DIR}/clang-format    ~/.clang-format
+testandlink ${DIR}/setup_conda.env ~/setup_conda.env
