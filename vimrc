@@ -250,7 +250,7 @@ endif
 " This addresses complaints about callbacks in vimtex
 if has('nvim')
   let g:vimtex_compiler_latexmk = {
-      \ 'backend' : 'nvim',
+      \ 'backend' : 'process',
       \ 'background' : 1,
       \ 'build_dir' : '',
       \ 'callback' : 1,
