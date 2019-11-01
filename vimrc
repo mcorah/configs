@@ -290,6 +290,11 @@ let g:vimtex_view_method='zathura'
 " Do not open the quickfix window automatically
 let g:vimtex_quickfix_mode = 0
 
+" bibtex configuration so that things are not insanely slow
+let g:vimtex_complete_enabled = 0
+let g:vimtex_complete_bib = { 'simple': 1 }
+let g:vimtex_complete_ignore_case = 1
+
 " vim-tex-fold configs
 " (align included bydefault)
 let g:tex_fold_additional_envs = [
