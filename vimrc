@@ -15,6 +15,10 @@
 
 " When started as "evim", evim.vim will already have done these settings.
 
+" set up python
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+
 " Vundle
 set nocompatible
 filetype off
