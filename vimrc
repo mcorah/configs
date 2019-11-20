@@ -30,6 +30,11 @@ Plugin 'gmarik/vundle'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'lervag/vimtex'
 Plugin 'Valloric/YouCompleteMe'
+
+"Plugin 'roxma/nvim-yarp'
+"Plugin 'roxma/vim-hug-neovim-rpc'
+"Plugin 'Shougo/deoplete.nvim'
+
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'matze/vim-tex-fold'
 Plugin 'w0rp/ale'
@@ -169,6 +174,9 @@ endif
 let g:ycm_semantic_triggers.tex = [
       \ 're!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'
       \ ]
+
+" deoplete (instead of ycm)
+"let g:deoplete#enable_at_startup = 1
 
 """""""""""
 "
