@@ -6,7 +6,6 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.SetWMName
-import XMonad.Hooks.SetWMName
 
 main = do
 	xmonad $ gnomeConfig {
