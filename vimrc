@@ -15,6 +15,10 @@
 
 " When started as "evim", evim.vim will already have done these settings.
 
+" set up python
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+
 " Vundle
 set nocompatible
 filetype off
@@ -26,6 +30,11 @@ Plugin 'gmarik/vundle'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'lervag/vimtex'
 Plugin 'Valloric/YouCompleteMe'
+
+"Plugin 'roxma/nvim-yarp'
+"Plugin 'roxma/vim-hug-neovim-rpc'
+"Plugin 'Shougo/deoplete.nvim'
+
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'matze/vim-tex-fold'
 Plugin 'w0rp/ale'
@@ -170,6 +179,9 @@ let g:ycm_semantic_triggers.tex = [
       \ 're!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'
       \ ]
 
+" deoplete (instead of ycm)
+"let g:deoplete#enable_at_startup = 1
+
 """""""""""
 "
 " Functions
@@ -250,7 +262,7 @@ endif
 " This addresses complaints about callbacks in vimtex
 if has('nvim')
   let g:vimtex_compiler_latexmk = {
-      \ 'backend' : 'nvim',
+      \ 'backend' : 'process',
       \ 'background' : 1,
       \ 'build_dir' : '',
       \ 'callback' : 1,
@@ -289,6 +301,11 @@ let g:vimtex_view_method='zathura'
 
 " Do not open the quickfix window automatically
 let g:vimtex_quickfix_mode = 0
+
+" bibtex configuration so that things are not insanely slow
+let g:vimtex_complete_enabled = 0
+let g:vimtex_complete_bib = { 'simple': 1 }
+let g:vimtex_complete_ignore_case = 1
 
 " vim-tex-fold configs
 " (align included bydefault)
