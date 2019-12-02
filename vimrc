@@ -110,8 +110,12 @@ if has("autocmd")
 
   augroup END
 
-  " delete whitespace at end of line
-  autocmd BufWritePre * :%s/\s\+$//e
+  " delete whitespace at end of line except for diffs which depend on whitespace
+  autocmd BufWritePre *
+    \ if expand('%:e') != 'diff' |
+    \   :%s/\s\+$//e |
+    \ endif
+
 else
 
 "  set autoindent		" always set autoindenting on
