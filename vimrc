@@ -22,29 +22,25 @@ let g:python3_host_prog = '/usr/bin/python3'
 " Vundle
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+
+call plug#begin('~/.vim/plugged')
 
 "Plugins ***************************
-Plugin 'gmarik/vundle'
-Plugin 'JuliaLang/julia-vim'
-Plugin 'lervag/vimtex'
-Plugin 'Valloric/YouCompleteMe'
+Plug 'gmarik/vundle'
+Plug 'JuliaLang/julia-vim'
+Plug 'lervag/vimtex'
 
-"Plugin 'roxma/nvim-yarp'
-"Plugin 'roxma/vim-hug-neovim-rpc'
-"Plugin 'Shougo/deoplete.nvim'
 
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'matze/vim-tex-fold'
-Plugin 'w0rp/ale'
+Plug 'vim-scripts/taglist.vim'
+Plug 'matze/vim-tex-fold'
+Plug 'w0rp/ale'
 
 " stuff for google code formatting
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-Plugin 'google/vim-glaive'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
 
-call vundle#end()
+call plug#end()
 call glaive#Install()
 
 
