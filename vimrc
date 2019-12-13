@@ -17,7 +17,7 @@
 
 " set up python
 let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3.6'
 
 " Vundle
 set nocompatible
@@ -30,6 +30,7 @@ Plug 'gmarik/vundle'
 Plug 'JuliaLang/julia-vim'
 Plug 'lervag/vimtex'
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'vim-scripts/taglist.vim'
 Plug 'matze/vim-tex-fold'
@@ -166,17 +167,14 @@ let &cc='+'.join(range(1,255),',+')
 "thesaurus
 " set thesaurus+=/home/micah/thesaurus/mthesaur.txt
 
+" deoplete general
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-"you complete me for vimtex
-if !exists('g:ycm_semantic_triggers')
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = [
-      \ 're!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'
-      \ ]
-
-" deoplete (instead of ycm)
-"let g:deoplete#enable_at_startup = 1
+" deoplete for vimtex (instead of ycm)
+call deoplete#custom#var('omni', 'input_patterns', {
+        \ 'tex': g:vimtex#re#deoplete
+        \})
 
 """""""""""
 "
@@ -299,7 +297,7 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode = 0
 
 " bibtex configuration so that things are not insanely slow
-let g:vimtex_complete_enabled = 0
+let g:vimtex_complete_enabled = 1
 let g:vimtex_complete_bib = { 'simple': 1 }
 let g:vimtex_complete_ignore_case = 1
 
