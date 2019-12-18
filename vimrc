@@ -23,26 +23,28 @@ let g:python3_host_prog = '/usr/bin/python3.6'
 set nocompatible
 filetype off
 
-call plug#begin('~/.vim/plugged')
+if has("nvim")
+  call plug#begin('~/.vim/plugged')
 
-"Plugins ***************************
-Plug 'gmarik/vundle'
-Plug 'JuliaLang/julia-vim'
-Plug 'lervag/vimtex'
+  "Plugins ***************************
+  Plug 'gmarik/vundle'
+  Plug 'JuliaLang/julia-vim'
+  Plug 'lervag/vimtex'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'vim-scripts/taglist.vim'
-Plug 'matze/vim-tex-fold'
-Plug 'w0rp/ale'
+  Plug 'vim-scripts/taglist.vim'
+  Plug 'matze/vim-tex-fold'
+  Plug 'w0rp/ale'
 
-" stuff for google code formatting
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
+  " stuff for google code formatting
+  Plug 'google/vim-maktaba'
+  Plug 'google/vim-codefmt'
+  Plug 'google/vim-glaive'
 
-call plug#end()
-call glaive#Install()
+  call plug#end()
+  call glaive#Install()
+endif
 
 
 if v:progname =~? "evim"
@@ -167,15 +169,6 @@ let &cc='+'.join(range(1,255),',+')
 "thesaurus
 " set thesaurus+=/home/micah/thesaurus/mthesaur.txt
 
-" deoplete general
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" deoplete for vimtex (instead of ycm)
-call deoplete#custom#var('omni', 'input_patterns', {
-        \ 'tex': g:vimtex#re#deoplete
-        \})
-
 """""""""""
 "
 " Functions
@@ -251,10 +244,22 @@ if (! has('gui_running')) && (! has ('nvim')) && executable('nvim')
   :echom "Did you mean to use nvim?"
 endif
 
-"vimtex stuff
 
-" This addresses complaints about callbacks in vimtex
+" I've disabled plugins outside nvim. Set configs here.
 if has('nvim')
+
+  " deoplete general
+  let g:deoplete#enable_at_startup = 1
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+  " deoplete for vimtex (instead of ycm)
+  call deoplete#custom#var('omni', 'input_patterns', {
+          \ 'tex': g:vimtex#re#deoplete
+          \})
+
+  " vimtex stuff
+
+  " This addresses complaints about callbacks in vimtex
   let g:vimtex_compiler_latexmk = {
       \ 'backend' : 'process',
       \ 'background' : 1,
@@ -271,43 +276,26 @@ if has('nvim')
       \   '-interaction=nonstopmode',
       \ ],
       \}
-else
-  let g:vimtex_compiler_latexmk = {
-      \ 'backend' : 'process',
-      \ 'background' : 1,
-      \ 'build_dir' : '',
-      \ 'callback' : 0,
-      \ 'continuous' : 1,
-      \ 'executable' : 'latexmk',
-      \ 'options' : [
-      \   '-pdf',
-      \   '-shell-escape',
-      \   '-verbose',
-      \   '-file-line-error',
-      \   '-synctex=1',
-      \   '-interaction=nonstopmode',
-      \ ],
-      \}
+
+  let g:vimtex_imaps_enabled = 0
+  let g:vimtex_view_method='zathura'
+
+  " Do not open the quickfix window automatically
+  let g:vimtex_quickfix_mode = 0
+
+  " bibtex configuration so that things are not insanely slow
+  let g:vimtex_complete_enabled = 1
+  let g:vimtex_complete_bib = { 'simple': 1 }
+  let g:vimtex_complete_ignore_case = 1
+
+  " vim-tex-fold configs
+  " (align included bydefault)
+  let g:tex_fold_additional_envs = [
+    \ 'enumerate',
+    \ 'itemize',
+    \ 'align*', 'equation',
+    \ ]
 endif
-
-let g:vimtex_imaps_enabled = 0
-let g:vimtex_view_method='zathura'
-
-" Do not open the quickfix window automatically
-let g:vimtex_quickfix_mode = 0
-
-" bibtex configuration so that things are not insanely slow
-let g:vimtex_complete_enabled = 1
-let g:vimtex_complete_bib = { 'simple': 1 }
-let g:vimtex_complete_ignore_case = 1
-
-" vim-tex-fold configs
-" (align included bydefault)
-let g:tex_fold_additional_envs = [
-  \ 'enumerate',
-  \ 'itemize',
-  \ 'align*', 'equation',
-  \ ]
 
 " Modifications to syntax highlighting for diff mode
 " highlight DiffAdd    cterm=bold ctermfg=none ctermbg=17 gui=none guifg=bg guibg=Red
