@@ -252,6 +252,26 @@ if has('nvim')
   let g:deoplete#enable_at_startup = 1
   inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
+  " I've pulled this regex from the master on vimtex
+  " I believe matches get piped to vimtex.
+  let g:vimtex#re#deoplete = '\\(?:'
+        \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+        \ . '|(text|block)cquote\*?(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+        \ . '|(for|hy)\w*cquote\*?{[^}]*}(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+        \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
+        \ . '|hyperref\s*\[[^]]*'
+        \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+        \ . '|(?:include(?:only)?|input|subfile)\s*\{[^}]*'
+        \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+        \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|(usepackage|RequirePackage|PassOptionsToPackage)(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|documentclass(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|begin(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|end(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|\w*'
+        \ .')'
+
   " deoplete for vimtex (instead of ycm)
   call deoplete#custom#var('omni', 'input_patterns', {
           \ 'tex': g:vimtex#re#deoplete
