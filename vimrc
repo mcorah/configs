@@ -306,7 +306,7 @@ if has('nvim')
   let g:vimtex_complete_ignore_case = 1
 
   " remotes!
-  let g:vimtex_compiler_progname='nvr --servername ' . v:servername
+  let g:vimtex_compiler_progname='nvr'
 
   " vim-tex-fold configs
   " (align included bydefault)
