@@ -27,13 +27,18 @@ if has("nvim")
   call plug#begin('~/.vim/plugged')
 
   "Plugins ***************************
-  Plug 'JuliaLang/julia-vim'
   Plug 'lervag/vimtex'
 
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+  Plug 'JuliaLang/julia-vim'
+  Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
+
   Plug 'vim-scripts/taglist.vim'
-  Plug 'matze/vim-tex-fold'
+  Plug 'mcorah/vim-tex-fold', { 'branch' : 'feature/speedup' }
   Plug 'w0rp/ale'
 
   " stuff for google code formatting
@@ -274,6 +279,9 @@ if has('nvim')
           \ 'tex': g:vimtex#re#deoplete
           \})
 
+  "call deoplete#custom#option('sources', {
+        "\ '_' : ['buffer',]
+
   " vimtex stuff
 
   " This addresses complaints about callbacks in vimtex
@@ -315,6 +323,31 @@ if has('nvim')
     \ 'itemize',
     \ 'align*', 'equation',
     \ ]
+
+  " Julia
+  let g:default_julia_version = '1.0'
+
+  " Julia language server
+  let g:LanguageClient_autoStart = 1
+  let g:LanguageClient_serverCommands = {
+    \   'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+    \       using LanguageServer;
+    \       using Pkg;
+    \       import StaticLint;
+    \       import SymbolServer;
+    \       env_path = dirname(Pkg.Types.Context().env.project_file);
+    \       debug = false;
+    \
+    \       server = LanguageServer.LanguageServerInstance(
+    \                 stdin, stdout, debug, env_path, "", Dict());
+    \       server.runlinter = true;
+    \       run(server);
+    \   ']
+    \ }
+
+  " Language client configuration
+  let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
+  let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
 endif
 
 " Modifications to syntax highlighting for diff mode
