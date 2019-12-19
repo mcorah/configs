@@ -98,7 +98,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
+# vim and editor related commands
 export EDITOR="nvim"
+# fixed server, but I don't need to use servers for now
+alias nvimserver="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
 
 #my machine specific bash configs
 if [ -f ~/.bash_specific ]; then
