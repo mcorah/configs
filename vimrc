@@ -27,7 +27,6 @@ if has("nvim")
   call plug#begin('~/.vim/plugged')
 
   "Plugins ***************************
-  Plug 'gmarik/vundle'
   Plug 'JuliaLang/julia-vim'
   Plug 'lervag/vimtex'
 
