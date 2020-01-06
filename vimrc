@@ -33,7 +33,7 @@ if has("nvim")
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
   Plug 'vim-scripts/taglist.vim'
-  Plug 'matze/vim-tex-fold'
+  Plug 'mcorah/vim-tex-fold', { 'branch' : 'feature/speedup' }
   Plug 'w0rp/ale'
 
   " stuff for google code formatting
