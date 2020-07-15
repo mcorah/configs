@@ -192,7 +192,20 @@ let maplocalleader = ','
 let mapleader = ' '
 
 "spell check
-:map <leader>s :setlocal spell! spelllang=en_us<CR>
+function DoSpell()
+  :setlocal spell! spelllang=en_us
+
+  " highlight repeated words in basic files and all others
+  :syn match SpellDuplicate "\c\v<(\w+)(\n|\s)+\1>"
+  :syn match SpellDuplicate "\c\v<(\w+)(\n|\s)+\1>" containedin=ALL
+  " do highlighting
+  :highlight def link SpellDuplicate SpellCap
+endfunction
+
+:map <leader>s :call DoSpell()<CR>
+
+" search for duplicates
+:map <leader>d /\c\<\(\w\+\)\(\s\\|\n\)\+\1\><CR>
 
 imap jk <Esc>
 
