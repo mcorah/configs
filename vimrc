@@ -321,6 +321,10 @@ if has('nvim')
   " remotes!
   let g:vimtex_compiler_progname='nvr'
 
+  " Supposedly ensures vimtex gets loaded properly by distinguishing between
+  " other texs
+  let g:tex_flavor = 'latex'
+
   " vim-tex-fold configs
   " (align included bydefault)
   let g:tex_fold_additional_envs = [
