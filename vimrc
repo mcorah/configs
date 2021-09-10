@@ -36,6 +36,8 @@ if has("nvim")
   Plug 'mcorah/vim-tex-fold', { 'branch' : 'feature/speedup' }
   Plug 'w0rp/ale'
 
+  Plug 'tmhedberg/SimpylFold' " Folding for Python
+
   " stuff for google code formatting
   Plug 'google/vim-maktaba'
   Plug 'google/vim-codefmt'
@@ -150,9 +152,10 @@ au BufNewFile,BufRead *.{cc,cxx,cpp,h,hh,hpp,hxx}.* set filetype=cpp
 "micah's stuff
 set shiftwidth=2
 set softtabstop=2
-set sw=2
 set tabstop=2
-set ts=2
+
+" Use different tabs for Python
+autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
 
 set expandtab
 set nu
