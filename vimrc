@@ -38,6 +38,8 @@ if has("nvim")
 
   Plug 'tmhedberg/SimpylFold' " Folding for Python
 
+  Plug 'tpope/vim-fugitive' " git for vim, supposedly awesome
+
   " stuff for google code formatting
   Plug 'google/vim-maktaba'
   Plug 'google/vim-codefmt'
