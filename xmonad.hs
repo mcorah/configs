@@ -8,7 +8,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Hooks.SetWMName
 
 -- For stuff involving physical screens
-import XMonad.Actions.PhysicalScreens
+-- import XMonad.Actions.PhysicalScreens
 
 main = do
 	xmonad $ gnomeConfig {
@@ -20,7 +20,7 @@ main = do
 -- names for the ten abstract desktops/workspaces
 myWorkspaces=["1","2","3","4","5","6","7","8","9","0"]
 
-myKeys=desktopKeys ++ screenKeys
+myKeys=desktopKeys
 
 desktopKeys=[ (otherModMasks ++ "M-" ++ [key], action tag)
              | (tag, key) <- zip myWorkspaces "1234567890"
@@ -34,10 +34,10 @@ desktopKeys=[ (otherModMasks ++ "M-" ++ [key], action tag)
 -- This avoids the issue that the screen numbering can be arbitrary and not
 -- necessarily left to right.
 --
-screenKeys=[ (mask ++ "M-" ++ [key], action screen)
-            | (screen, key) <- zip [0..] "wer"
-            , (mask, action) <- [("", viewScreen), ("S-", sendToScreen)]
-           ]
+-- screenKeys=[ (mask ++ "M-" ++ [key], action screen)
+--             | (screen, key) <- zip [0..] "wer"
+--            , (mask, action) <- [("", viewScreen), ("S-", sendToScreen)]
+--           ]
 
 -- workspace layout modes (fullscreen, etc.)
 myLayout = avoidStruts (
