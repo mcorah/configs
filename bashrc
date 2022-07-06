@@ -268,3 +268,5 @@ function githashes
     )
   done
 }
+
+alias suspend="systemctl suspend"
