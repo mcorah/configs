@@ -123,7 +123,7 @@ if has("autocmd")
 
   " delete whitespace at end of line except for diffs which depend on whitespace
   autocmd BufWritePre *
-    \ if expand('%:e') != 'diff' |
+    \ if s:cleanup_whitespace && expand('%:e') != 'diff' |
     \   :%s/\s\+$//e |
     \ endif
 
@@ -255,6 +255,32 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+
+" Turn whitespace cleanup on or off
+map <leader>w :call ToggleWhiteSpaceCleanup()<cr>
+
+let s:cleanup_whitespace = 1
+function ToggleWhiteSpaceCleanup()
+  if s:cleanup_whitespace
+    let s:cleanup_whitespace = 0
+  else
+    let s:cleanup_whitespace = 1
+  endif
+endfunction
+
+" Turn wrapping on or off
+map <leader>b :call ToggleLineWrapping()<cr>
+
+let s:break_lines = 1
+function ToggleLineWrapping()
+  if s:break_lines
+    let s:break_lines = 0
+    set textwidth=0
+  else
+    let s:break_lines = 1
+    set textwidth=80
+  endif
+endfunction
 
 " warn if not using nvim
 if (! has('gui_running')) && (! has ('nvim')) && executable('nvim')
