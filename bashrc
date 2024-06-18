@@ -270,3 +270,5 @@ function githashes
 }
 
 alias suspend="systemctl suspend"
+
+alias servewebsite="bundle exec jekyll serve --watch --incremental"
